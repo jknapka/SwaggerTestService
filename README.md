@@ -7,3 +7,4 @@ There are a couple of oddities:
 
 2) I have not been able to figure out how to get logging to work correctly. Jetty always complains about log4j not being configured correctly, even though I thought I did that by supplying a log4j.properties in testsvc/jaxrs/main/resources.
 
+3) I know that some of this is wrong, in the sense that it is not using Maven's capabilities in the best way. See the parenthetical remark above.
