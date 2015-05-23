@@ -30,7 +30,7 @@ I know that some of this is wrong, in the sense that it is not using Maven's cap
 
 2) However, testsvcImpl also depends on testsvc at *compile* time, since it gets its API interface and model classes from testsvc. That means we cannot build testsvcImpl until testsvc is build. But it's not possible to tell Maven to ignore the runtime dependency on testsvcImpl while building, which means that the first time you build testsvc, you need to remove the dependency on testsvcImpl from testsvc/jaxrs/pom.xml. Once some version of testsvcImpl.jar is in the Maven repository, testsvc will build successfully with the testsvcImpl dependency in its pom.xml.
 
-3) I had to manually add scala-library.jar to the testsvc/jaxrs/pom.xml. I'm not sure why Swagger isn't getting that dependency in the normal way. (I'm extremely new to Maven, Swagger, Jetty, etc.)
+3) I had to manually add scala-library.jar to testsvc/jaxrs/pom.xml as a "system" dependency. I'm not sure why Maven isn't getting that dependency in the normal way. (As I mentioned above, I'm very new to Maven.)
 
 4) The file testsvc/jaxrs/src/main/resources/META-INF/com.jknapka.testsvc.api.TestApiInterface has been created in order 
 
