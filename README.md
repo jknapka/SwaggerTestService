@@ -32,6 +32,6 @@ I know that some of this is wrong, in the sense that it is not using Maven's cap
 
 3) I had to manually add scala-library.jar to testsvc/jaxrs/pom.xml as a "system" dependency. I'm not sure why Maven isn't getting that dependency in the normal way. (As I mentioned above, I'm very new to Maven.)
 
-4) The file testsvc/jaxrs/src/main/resources/META-INF/com.jknapka.testsvc.api.TestApiInterface has been created in order 
+4) The file testsvc/jaxrs/src/main/resources/META-INF/com.jknapka.testsvc.api.TestApiInterface has been created in order to tell testsvc what class to load to implement TestApiInterface; specifically, TestApiImpl from the testsvcImpl project. See the documentation for the J2SE class java.util.ServiceLoader, and then the code in testsvc/jaxrs/src/main/java/com/jknapka/testsvc/api/TestApi.java, to understand how that works.
 
 5) I have not been able to figure out how to get logging to work correctly. Jetty always complains about log4j not being configured correctly, even though I thought I did that by supplying a log4j.properties in testsvc/jaxrs/main/resources.
