@@ -1,4 +1,4 @@
-bREM Generate the Java server stub for the test service. Assumes that Maven
+REM Generate the Java server stub for the test service. Assumes that Maven
 REM and swagger-codegen[-delegate] are installed in C:\Libraries
 move ..\Downloads\swagger.yaml . 
 rmdir /s testsvc
