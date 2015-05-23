@@ -1,0 +1,81 @@
+# Test Service
+swagger: '2.0'
+
+info:
+  version: "1.0.0"
+  title: Test Service
+  description: This service provides GET and POST access to a simple name/value store. The purpose is to demonstrate how to build and configure a simple server using the JaxRSServerCodegenDelegate branch of swagger-codegen maintainted by jknapka.
+basePath: "/v1"
+schemes:
+  - "https"
+  - "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+definitions:
+
+  InputThing:
+    title: InputThing
+    description: The thing we input.
+    type: object
+    required: [oname]
+    properties:
+      oname:
+        type: string
+      ovalue:
+        type: string
+    
+  OutputThing:
+    title: OutputThing
+    description: The thing we output.
+    type: object
+    required: [oname,ovalue]
+    properties:
+      oname:
+        type: string
+      ovalue:
+        type: string
+
+  KeyError:
+    title: KeyError
+    description: A key could not be found.
+    type: object
+    required: [oname]
+    properties:
+      oname:
+        type: string
+
+paths:
+
+  /test:
+    get:
+      description: Get the OutputThing for a given name.
+      parameters:
+        - name: oname
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Got an output thing.
+          schema:
+            $ref: '#/definitions/OutputThing'
+        404:
+          description: No such key.
+          schema:
+            $ref: '#/definitions/KeyError'
+    post:
+      description: If a value is provided, update the name with the value. Otherwise, set the value to an empty string. In either case, return the corresponding OutputThing.
+      parameters:
+        - name: inthing
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/InputThing'
+      responses:
+        200:
+          description: Got an output thing.
+          schema:
+            $ref: '#/definitions/OutputThing'
