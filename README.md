@@ -12,11 +12,11 @@ Other files (the scripts may contain hard-coded paths which need to be changed):
 
   * swagger.yaml - Swagger spec for the test service.
  
-  * bldImpl.cmd - Invokes Maven to build the testsvcImpl code.
- 
-  * bldSw.cmd - Invokes Maven to build the testsvc code.
- 
   * gen1.cmd - Generates testsvc from swagger.yaml
+ 
+  * bldSw.cmd - Invokes Maven to build testsvc.
+ 
+  * bldImpl.cmd - Invokes Maven to build testsvcImpl.
  
   * pom.xml - gen1.cmd copies this over the generated testsvc/jaxrs/pom.xml to fix some issues. A hack!
  
