@@ -5,6 +5,24 @@
   <packaging>jar</packaging>
   <name>testsvc-server</name>
   <version>1.0.0</version>
+
+  <profiles>
+    <profile>
+     <activation>
+        <property>
+          <name>!bootstrap</name>
+        </property>
+     </activation>
+     <dependencies>
+      <dependency>
+        <groupId>com.jknapka.testsvcImpl</groupId>
+        <artifactId>testsvcImpl</artifactId>
+        <version>1.0</version>
+        <scope>runtime</scope>
+      </dependency>
+     </dependencies>
+    </profile>
+  </profiles>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
@@ -71,12 +89,6 @@
       <version>1.0</version>
       <scope>system</scope>
       <systemPath>C:/Program Files (x86)/scala/lib/scala-library.jar</systemPath>
-    </dependency>
-    <dependency>
-      <groupId>com.jknapka.testsvcImpl</groupId>
-      <artifactId>testsvcImpl</artifactId>
-      <version>1.0</version>
-      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.wordnik</groupId>
