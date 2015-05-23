@@ -28,9 +28,9 @@ Notes, problems, oddities:
 
 I know that some of this is wrong, in the sense that it is not using Maven's capabilities in the best way. I'm extremely new to Maven, Swagger, and Jetty. With that said:
 
-1) The Maven-generated testsvc/jaxrs/pom.xml has been changed to include a runtime dependency on testsvcImpl. This lets it load the implementation classes.
+1) The Maven-generated testsvc/jaxrs/pom.xml has been changed to include a runtime dependency on testsvcImpl. This lets testsvc load the implementation classes from testsvcImpl.
 
-2) However, testsvcImpl also depends on testsvc at *compile* time, since it gets its API interface and model classes from testsvc. That means we cannot build testsvcImpl until testsvc is build. But it's not possible to tell Maven to ignore the runtime dependency on testsvcImpl while building testsvc (Maven, why?), which effectively results in a circular dependency where there's no need for one.  What this means is, the first time you build testsvc, you need to remove the dependency on testsvcImpl from testsvc/jaxrs/pom.xml. Build testscv, install it in the Maven repository;  then build testsvcImpl and install it in the Maven repository. Then add the testsvcImpl dependency back into testsvc's pom.xml. Once some version of testsvcImpl.jar is in the Maven repo, testsvc will build successfully with the testsvcImpl dependency in its pom.xml, and you have to add it back in for testsvc to actually run.
+2) However, testsvcImpl also depends on testsvc at *compile* time, since it gets its API interface and model classes from testsvc. That means we cannot build testsvcImpl until testsvc is built. Because Maven tries to resolve all dependencies before a build. this effectively results in a circular dependency where there's no need for one.  What this means is, the first time you build testsvc, you need to supply the property "-Dbootstrap=1", which deactivates the problematic dependency on testsvcImpl using a Maven profile. See testsvc/jaxrs/pom.xml for details.
 
 3) I had to manually add scala-library.jar to testsvc/jaxrs/pom.xml as a "system" dependency. I'm not sure why Maven isn't getting that dependency in the normal way. (As I mentioned above, I'm very new to Maven.)
 
