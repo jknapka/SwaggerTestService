@@ -8,6 +8,7 @@
 
   <profiles>
     <profile>
+     <!-- Use the testsvcImpl dependency only of -Dbootstrap is ABSENT. -->
      <activation>
         <property>
           <name>!bootstrap</name>
