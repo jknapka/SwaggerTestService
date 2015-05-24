@@ -21,6 +21,8 @@ Other files (the scripts may contain hard-coded paths which need to be changed):
   * bldImpl.cmd - Invokes Maven to build testsvcImpl.
  
   * pom.xml - gen1.cmd copies this over the generated testsvc/jaxrs/pom.xml to fix some issues. A hack!
+
+  * runTestSvc.cmd - Run testsvc listening on local port 8072.
  
   * test.in - JSON input file read by test1.cmd.
  
