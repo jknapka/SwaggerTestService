@@ -26,7 +26,7 @@ Other files (the scripts may contain hard-coded paths which need to be changed):
  
   * test1.cmd - Uses curl to send a POST of test.in
 
-Notes, problems, oddities:
+*Notes, problems, oddities:*
 
 I know that some of this is wrong, in the sense that it is not using Maven's capabilities in the best way. I'm extremely new to Maven, Swagger, and Jetty. With that said:
 
